@@ -94,6 +94,12 @@ def add_all_faces():
     for filename in listdir(folder):
         add_face(filename)
 
+def set_folder(fldr):
+    global folder
+    folder = fldr.replace(".", "/")
+    
+def get_folder():
+    return folder
 #create_database()
 #add_all_faces()
 #add_face("Zani.jpeg")
@@ -128,6 +134,21 @@ def addAll():
     try:
         add_all_faces()
         return 200
+    except Exception as err:
+      print(str(err))
+      return str(err)
+  
+def setFolder(fldr):
+    try:
+        set_folder(fldr)
+        return 200
+    except Exception as err:
+      print(str(err))
+      return str(err)
+
+def getFolder():
+    try:
+        return get_folder()
     except Exception as err:
       print(str(err))
       return str(err)

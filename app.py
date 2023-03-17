@@ -7,8 +7,8 @@ Al medir distancias, me salto a la propia imagen de la que Rayas me pide que
 busque similitudes
 """
 
-import faceRecogV6
-fr = faceRecogV6
+import faceRecog
+fr = faceRecog
 
 from flask import Flask, jsonify
 from flask_sslify import SSLify
@@ -31,6 +31,14 @@ def add(filename):
 @app.route('/addAll')
 def addAll():
     return jsonify({"Response": fr.addAll()})
+
+@app.route('/setFolder/<string:folder>')
+def setFolder(folder):
+    return jsonify({"Response": fr.setFolder(folder)})
+
+@app.route('/getFolder')
+def getFolder():
+    return jsonify({"Response": fr.getFolder()})
 
 if __name__ == '__main__':
     app.run(debug=True, port=443)
